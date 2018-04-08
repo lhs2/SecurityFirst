@@ -18,6 +18,7 @@
 		C82BC7052078303E0002E5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BC7042078303E0002E5FC /* Login.storyboard */; };
 		C82BC70820783A810002E5FC /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BC70720783A810002E5FC /* UIButton+Border.swift */; };
 		C8598B55207A7DA900CF3E40 /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8598B54207A7DA900CF3E40 /* DynamicValue.swift */; };
+		C8EBFA3020786A15008F7A51 /* API_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EBFA2F20786A15008F7A51 /* API_Manager.swift */; };
 		C8F53EB52079E0B4006096BB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F53EB42079E0B4006096BB /* LoginViewController.swift */; };
 		C8F53EB72079E1E7006096BB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F53EB62079E1E7006096BB /* LoginViewModel.swift */; };
 		C8F53EB92079E248006096BB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F53EB82079E248006096BB /* UserModel.swift */; };
@@ -58,6 +59,8 @@
 		C82BC7042078303E0002E5FC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C82BC70720783A810002E5FC /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
 		C8598B54207A7DA900CF3E40 /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
+		C882C192207886E100EBED50 /* SecurityFirst.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecurityFirst.entitlements; sourceTree = "<group>"; };
+		C8EBFA2F20786A15008F7A51 /* API_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Manager.swift; sourceTree = "<group>"; };
 		C8F53EB42079E0B4006096BB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C8F53EB62079E1E7006096BB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C8F53EB82079E248006096BB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 				C81389E02076F7F90010B20B /* SecurityFirstTests */,
 				C81389EB2076F7F90010B20B /* SecurityFirstUITests */,
 				C81389C72076F7F70010B20B /* Products */,
+				C888C085207ACA9700011CBD /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +120,8 @@
 				C82BC709207864C00002E5FC /* ViewModel */,
 				C82BC70620783A200002E5FC /* Components */,
 				C82BC7032078301F0002E5FC /* Storyboards */,
+				C882C192207886E100EBED50 /* SecurityFirst.entitlements */,
+				C8EBFA2E207869FF008F7A51 /* API */,
 				C81389C92076F7F70010B20B /* AppDelegate.swift */,
 				C81389CB2076F7F70010B20B /* ViewController.swift */,
 				C81389CD2076F7F70010B20B /* Main.storyboard */,
@@ -186,6 +192,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C888C085207ACA9700011CBD /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C8EBFA2E207869FF008F7A51 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C8EBFA2F20786A15008F7A51 /* API_Manager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,6 +275,11 @@
 				TargetAttributes = {
 					C81389C52076F7F70010B20B = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					C81389DC2076F7F90010B20B = {
 						CreatedOnToolsVersion = 9.3;
@@ -318,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8EBFA3020786A15008F7A51 /* API_Manager.swift in Sources */,
 				C81389CC2076F7F70010B20B /* ViewController.swift in Sources */,
 				C8F53EB92079E248006096BB /* UserModel.swift in Sources */,
 				C81389D22076F7F70010B20B /* SecurityFirst.xcdatamodeld in Sources */,
@@ -498,13 +525,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SecurityFirst/SecurityFirst.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirst/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -516,13 +541,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SecurityFirst/SecurityFirst.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirst/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirst;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -538,11 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirstTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirstTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -559,11 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirstTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirstTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -579,11 +594,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirstUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirstUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -599,11 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QALTNZR5X2;
 				INFOPLIST_FILE = SecurityFirstUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.luiz.h.de.sousa.SecurityFirstUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

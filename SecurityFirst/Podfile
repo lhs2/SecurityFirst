@@ -4,16 +4,20 @@
 target 'SecurityFirst' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  # Pods for SecurityFirst
-  
-  pod 'TextFieldEffects' 
 
-  target 'SecurityFirstTests' do
-    inherit! :search_paths
+  # Pods for SecurityFirst
+  pod 'Alamofire'
+  pod 'RxSwift' 
+  pod 'KeychainSwift', '~> 11.0'
+  pod 'SwiftyJSON'
   pod 'TextFieldEffects'
   pod 'RxSwift' 
   pod 'RxCocoa'
   pod 'Bond'
+
+  target 'SecurityFirstTests' do
+    inherit! :search_paths
+
     # Pods for testing
   end
 
