@@ -10,6 +10,10 @@ target 'SecurityFirst' do
 
   target 'SecurityFirstTests' do
     inherit! :search_paths
+  pod 'TextFieldEffects'
+  pod 'RxSwift' 
+  pod 'RxCocoa'
+  pod 'Bond'
     # Pods for testing
   end
 

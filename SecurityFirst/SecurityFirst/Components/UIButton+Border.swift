@@ -48,8 +48,8 @@ class BorderUIButton: UIButton {
             self.setTitleColor(#colorLiteral(red: 0.06666666667, green: 0.6156862745, blue: 0.6431372549, alpha: 0.748184419), for: .highlighted)
             self.fillColor = .clear
             self.layer.cornerRadius = 10.0
-            self.layer.borderWidth = 2.0
-            self.layer.borderColor = #colorLiteral(red: 0.06666666667, green: 0.6156862745, blue: 0.6431372549, alpha: 1)
+            self.layer.borderWidth = 3.0
+            self.layer.borderColor = self.isEnabled ? #colorLiteral(red: 0.06666666667, green: 0.6156862745, blue: 0.6431372549, alpha: 1) : #colorLiteral(red: 0.06666666667, green: 0.6156862745, blue: 0.6431372549, alpha: 0.3032845511)
             self.layer.masksToBounds = true
             
         

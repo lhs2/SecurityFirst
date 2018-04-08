@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="8qj-Qg-txe">
             <objects>
-                <viewController id="njK-sT-uaD" customClass="ViewController" customModule="SecurityFirst" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="njK-sT-uaD" customClass="LoginViewController" customModule="SecurityFirst" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VIv-tH-fyh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,6 +54,9 @@
                                         <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginRequest:" destination="njK-sT-uaD" eventType="touchUpInside" id="Avz-my-49k"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eVM-ut-2OR">
                                 <rect key="frame" x="20" y="677" width="374" height="34"/>
@@ -151,6 +154,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ff-Kh-sGm"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Q02-7q-a8k" id="ERo-N0-T9E"/>
+                        <outlet property="login" destination="Za0-ls-Z5e" id="Gum-Qd-1JW"/>
+                        <outlet property="passwordTextField" destination="OMq-Fz-Kpb" id="qpf-Xh-w0g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V8h-dL-yTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
