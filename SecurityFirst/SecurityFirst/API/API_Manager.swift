@@ -41,7 +41,8 @@ class APIManager {
         func request(_ method          : Alamofire.HTTPMethod,
                      _ endpoint        : Endpoint,
                      _ pathParamenters : [CVarArg]?,
-                     _ parameters      : [String:Any]? ) {
+                     _ parameters      : [String:Any]?,
+                     handler: @escaping ((_ status: Bool, _ message: String)->Void)) {
         
         
         var requestURL = APIManager.BASE_URL + endpoint.rawValue
@@ -55,46 +56,45 @@ class APIManager {
         if endpoint.rawValue == Endpoint.Logo.rawValue {
             headers["Authorization"] = keychain.get("token")
         }
-        self.manager.request(requestURL, method: method, parameters: parameters, encoding: encoding, headers: headers).rx.responseJSON()
+         self.manager.request(requestURL, method: method, parameters: parameters, encoding: encoding, headers: headers).rx.responseJSON()
             .subscribe(
                 onNext: {
                     self.handleResponse(endpoint, JSON($0))
-                },onError: {
-                    self.handleError(endpoint, JSON($0))
-                    
-                }
-            )
-            
+                    let message = self.keychain.get("message") ?? ""
+                    if(message == "OK") {
+                        handler(true, message)
+                    } else {
+                        handler(false, message)
+                    }
+                
+            })
        
     }
     
-    func handleError(    _ endpoint : Endpoint,
-                         _ json     : JSON) {
-        switch endpoint {
-            case .SignIn:
-                print(json["message"].string!)
-                //Show Alert With Message Error in Endpoint
-            case .SignUp:
-                print(json["message"].string!)
-                //Show Alert With Message Error in Endpoint
-            default:
-                print(json["message"].string!)
-                //Show Alert With Message Error Generic
-        }
-        
-    }
     
     func handleResponse( _ endpoint : Endpoint,
                          _ json     : JSON) {
-        switch endpoint {
+        if let token = json["token"].string {
+            switch endpoint {
             case .SignIn:
-                keychain.set(json["token"].string!, forKey: "token")
+                keychain.set(token, forKey: "token")
             case .SignUp:
-                keychain.set(json["token"].string!, forKey: "token")
+                keychain.set(token, forKey: "token")
             default:
                 print("Endpoint do not support handleResponse")
+            }
+            keychain.set("OK", forKey: "message")
+        } else if var message = json["message"].string {
+            switch endpoint {
+            case .SignIn:
+                message = "Login: \(message)"
+            case .SignUp:
+                message = "Registro: \(message)"
+            default:
+                print("Endpoint do not support handleResponse")
+            }
+            keychain.set(message, forKey: "message")
         }
-        
         
     }
     
@@ -113,6 +113,7 @@ extension Reactive where Base: DataRequest {
                     observer.onCompleted()
                     
                 case .failure(let error):
+                    print(error)
                     observer.onError(error)
                 }
             }

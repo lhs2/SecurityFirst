@@ -33,12 +33,29 @@ class LoginViewController: UIViewController {
         _ = loginModel.isValidLogin.map { $0 }
             .bind(to: login.rx.isEnabled)
         
+        
     }
     @IBAction func loginRequest(_ sender: Any) {
-        print("enable", loginModel.email.value, loginModel.password.value )
+        loginModel.attemptToLogin(self) { (success, message) in
+            if success {
+              self.showAlert(title: "Faz segue", message: message)
+            } else {
+              self.showAlert(title: "Erro", message: message)
+            }
+        }
         
     }
     
     
     
+}
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+        }))
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
