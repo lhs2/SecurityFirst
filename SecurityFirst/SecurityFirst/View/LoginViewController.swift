@@ -21,6 +21,29 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.setupBind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupView()
+        
+    }
+    
+    @IBAction func loginRequest(_ sender: Any) {
+        loginModel.attemptToLogin { (success, message) in
+            if success {
+              self.showAlert(title: "Faz segue", message: message)
+            } else {
+              self.showAlert(title: "Erro", message: message)
+            }
+        }
+        
+    }
+    
+    func setupBind() {
         _ = emailTextField.rx.text
             .orEmpty
             .bind(to: loginModel.email)
@@ -32,18 +55,14 @@ class LoginViewController: UIViewController {
         
         _ = loginModel.isValidLogin.map { $0 }
             .bind(to: login.rx.isEnabled)
-        
-        
     }
-    @IBAction func loginRequest(_ sender: Any) {
-        loginModel.attemptToLogin(self) { (success, message) in
-            if success {
-              self.showAlert(title: "Faz segue", message: message)
-            } else {
-              self.showAlert(title: "Erro", message: message)
-            }
-        }
+    
+    func setupView(){
+        self.navigationController?.isNavigationBarHidden = true
         
+        emailTextField.placeholder = "Email22"
+        passwordTextField.placeholder = "Senha22"
+        login.setTitle("Logar22", for: .normal)
     }
     
     

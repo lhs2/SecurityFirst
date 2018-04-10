@@ -36,7 +36,7 @@ class LoginViewModel: ReactiveCompatible {
         return Test.evaluate(with: testStr)
     }
     
-    func attemptToLogin(_ view: UIViewController, handler: @escaping ((_ success: Bool, _ message: String)->Void)) {
+    func attemptToLogin( handler: @escaping ((_ success: Bool, _ message: String)->Void)) {
         let params: [String: Any] = [
             "email": email.value,
             "password": password.value,
