@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginRequest(_ sender: Any) {
         loginModel.attemptToLogin { (success, message) in
             if success {
-              self.showAlert(title: "Faz segue", message: message)
+                self.performSegue(withIdentifier: "goToHome", sender: self)
             } else {
               self.showAlert(title: "Erro", message: message)
             }

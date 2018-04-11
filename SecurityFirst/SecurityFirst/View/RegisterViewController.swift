@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController {
     @IBAction func registerRequest(_ sender: Any) {
         registerModel.attemptToRegister() { (success, message) in
             if success {
-                self.showAlert(title: "Faz segue", message: message)
+                self.performSegue(withIdentifier: "goToHome", sender: self)
             } else {
                 self.showAlert(title: "Erro", message: message)
             }

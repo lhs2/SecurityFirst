@@ -15,6 +15,7 @@
 		C81389D72076F7F90010B20B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81389D52076F7F90010B20B /* LaunchScreen.storyboard */; };
 		C81389E22076F7F90010B20B /* SecurityFirstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81389E12076F7F90010B20B /* SecurityFirstTests.swift */; };
 		C81389ED2076F7F90010B20B /* SecurityFirstUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81389EC2076F7F90010B20B /* SecurityFirstUITests.swift */; };
+		C818DDCB207D8E2900BEA75B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C818DDCA207D8E2900BEA75B /* Home.storyboard */; };
 		C82BC7052078303E0002E5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BC7042078303E0002E5FC /* Login.storyboard */; };
 		C82BC70820783A810002E5FC /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BC70720783A810002E5FC /* UIButton+Border.swift */; };
 		C8341DCE207B1B1800C76904 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8341DCD207B1B1800C76904 /* Register.storyboard */; };
@@ -59,6 +60,7 @@
 		C81389E82076F7F90010B20B /* SecurityFirstUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecurityFirstUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81389EC2076F7F90010B20B /* SecurityFirstUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityFirstUITests.swift; sourceTree = "<group>"; };
 		C81389EE2076F7F90010B20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C818DDCA207D8E2900BEA75B /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		C82BC7042078303E0002E5FC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C82BC70720783A810002E5FC /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
 		C8341DCD207B1B1800C76904 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				C82BC7042078303E0002E5FC /* Login.storyboard */,
 				C8341DCD207B1B1800C76904 /* Register.storyboard */,
+				C818DDCA207D8E2900BEA75B /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				C82BC7052078303E0002E5FC /* Login.storyboard in Resources */,
 				C81389D72076F7F90010B20B /* LaunchScreen.storyboard in Resources */,
 				C81389D42076F7F90010B20B /* Assets.xcassets in Resources */,
+				C818DDCB207D8E2900BEA75B /* Home.storyboard in Resources */,
 				C81389CF2076F7F70010B20B /* Main.storyboard in Resources */,
 				C8341DCE207B1B1800C76904 /* Register.storyboard in Resources */,
 			);
