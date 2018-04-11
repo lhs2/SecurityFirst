@@ -58,7 +58,6 @@ class LoginViewController: UIViewController {
     }
     
     func setupView(){
-        self.navigationController?.isNavigationBarHidden = true
         
         emailTextField.placeholder = "Email22"
         passwordTextField.placeholder = "Senha22"

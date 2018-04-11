@@ -29,7 +29,6 @@ class RegisterViewController: UIViewController {
     
     
     func setupView(){
-        self.navigationController?.isNavigationBarHidden = false
         self.title = "CADASTRO"
     }
     
