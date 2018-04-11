@@ -122,7 +122,7 @@
                                             <constraint firstAttribute="width" secondItem="Rpo-L1-T9w" secondAttribute="height" multiplier="1:1" id="vWG-4I-dVw"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECURITY FIRST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyV-Fk-gJU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECURITY FIRST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyV-Fk-gJU">
                                         <rect key="frame" x="4.3333333333333357" y="126.66666666666667" width="119.33333333333331" height="14.333333333333329"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.67843137254901964" green="0.69803921568627447" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -165,6 +165,8 @@
                         <outlet property="login" destination="Za0-ls-Z5e" id="Gum-Qd-1JW"/>
                         <outlet property="passwordTextField" destination="OMq-Fz-Kpb" id="qpf-Xh-w0g"/>
                         <segue destination="rjD-UO-4vc" kind="show" identifier="goToHome" id="Qvg-Tw-gZP"/>
+                        <outlet property="registerButton" destination="mta-70-1ek" id="MyU-La-sEO"/>
+                        <outlet property="registerLabel" destination="Ft3-ge-kg9" id="Pvb-FI-iwG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V8h-dL-yTF" userLabel="First Responder" sceneMemberID="firstResponder"/>

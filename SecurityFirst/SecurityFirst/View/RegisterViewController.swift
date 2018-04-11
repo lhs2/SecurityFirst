@@ -29,7 +29,13 @@ class RegisterViewController: UIViewController {
     
     
     func setupView(){
-        self.title = "CADASTRO"
+
+        self.title = "Register title".localized(using: "Localizable")
+        nameTextField.placeholder = "Username".localized(using: "Localizable")
+        passwordTextField.placeholder = "Password".localized(using: "Localizable")
+        mailTextField.placeholder = "Email".localized(using: "Localizable")
+        register.setTitle("Sign Up".localized(using: "Localizable"), for: .normal)
+        
     }
     
     func setupBind() {

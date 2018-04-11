@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  SecurityFirst
+
+  Created by de Sousa, Luiz H. on 11/04/2018.
+  Copyright © 2018 de Sousa, Luiz H. All rights reserved.
+*/
+
+"Email" = "メイル";
+"Password" = "パスワード";
+"Login" = "ログイン";
+"Sign Up" = "サインアップ";
+"Username" = "ユーザー名";
+"Create label" = "あなたはここに新しい？";
+"Create button" = "サインアップ！";
+"Register title" = "登録";
+
+

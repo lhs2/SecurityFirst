@@ -10,17 +10,24 @@ import UIKit
 import TextFieldEffects
 import Bond
 import ReactiveKit
+import SwitchLanguage
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: HoshiTextField!
     @IBOutlet weak var passwordTextField: HoshiTextField!
     @IBOutlet weak var login: BorderUIButton!
+    @IBOutlet weak var registerLabel: UILabel!
+    @IBOutlet weak var registerButton: BorderUIButton!
+    
+     let allLanguage = Language.getAllLanguages()
     
     var loginModel = LoginViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            Language.setCurrentLanguage("en")
+            Language.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -59,16 +66,21 @@ class LoginViewController: UIViewController {
     
     func setupView(){
         
-        emailTextField.placeholder = "Email22"
-        passwordTextField.placeholder = "Senha22"
-        login.setTitle("Logar22", for: .normal)
+        emailTextField.placeholder = "Email".localized(using: "Localizable")
+        passwordTextField.placeholder = "Password".localized(using: "Localizable")
+        registerLabel.text = "Create label".localized(using: "Localizable")
+        login.setTitle("Login".localized(using: "Localizable"), for: .normal)
+        registerButton.setTitle("Create button".localized(using: "Localizable"), for: .normal)
     }
     
     
     
 }
 
-extension UIViewController {
+extension UIViewController : LanguageDelegate {
+    public func language(_ language: Language.Type, getLanguageFlag flag: UIImage) {
+    }
+    
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
@@ -76,4 +88,5 @@ extension UIViewController {
         }))
         self.present(alertController, animated: true, completion: nil)
     }
+    
 }
