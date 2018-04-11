@@ -14,6 +14,7 @@ target 'SecurityFirst' do
   pod 'RxSwift' 
   pod 'RxCocoa'
   pod 'Bond'
+  pod 'SwitchLanguage', '~> 1.0'
 
   target 'SecurityFirstTests' do
     inherit! :search_paths
