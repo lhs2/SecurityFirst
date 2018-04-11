@@ -15,6 +15,7 @@
 		C81389D72076F7F90010B20B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81389D52076F7F90010B20B /* LaunchScreen.storyboard */; };
 		C81389E22076F7F90010B20B /* SecurityFirstTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81389E12076F7F90010B20B /* SecurityFirstTests.swift */; };
 		C81389ED2076F7F90010B20B /* SecurityFirstUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81389EC2076F7F90010B20B /* SecurityFirstUITests.swift */; };
+		C818DDCE207D905D00BEA75B /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C818DDCD207D905D00BEA75B /* Loading.swift */; };
 		C82BC7052078303E0002E5FC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BC7042078303E0002E5FC /* Login.storyboard */; };
 		C82BC70820783A810002E5FC /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BC70720783A810002E5FC /* UIButton+Border.swift */; };
 		C8341DCE207B1B1800C76904 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8341DCD207B1B1800C76904 /* Register.storyboard */; };
@@ -59,6 +60,7 @@
 		C81389E82076F7F90010B20B /* SecurityFirstUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecurityFirstUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81389EC2076F7F90010B20B /* SecurityFirstUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityFirstUITests.swift; sourceTree = "<group>"; };
 		C81389EE2076F7F90010B20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C818DDCD207D905D00BEA75B /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C82BC7042078303E0002E5FC /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C82BC70720783A810002E5FC /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
 		C8341DCD207B1B1800C76904 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				C82BC70720783A810002E5FC /* UIButton+Border.swift */,
 				C8598B54207A7DA900CF3E40 /* DynamicValue.swift */,
+				C818DDCD207D905D00BEA75B /* Loading.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				C81389CA2076F7F70010B20B /* AppDelegate.swift in Sources */,
 				C8F53EB52079E0B4006096BB /* LoginViewController.swift in Sources */,
 				C82BC70820783A810002E5FC /* UIButton+Border.swift in Sources */,
+				C818DDCE207D905D00BEA75B /* Loading.swift in Sources */,
 				C8598B55207A7DA900CF3E40 /* DynamicValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
