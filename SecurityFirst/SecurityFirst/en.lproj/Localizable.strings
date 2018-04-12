@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  SecurityFirst
+
+  Created by de Sousa, Luiz H. on 11/04/2018.
+  Copyright © 2018 de Sousa, Luiz H. All rights reserved.
+*/
+
+"Email" = "Email";
+"Password" = "Password";
+"Login" = "Login";
+"Sign Up" = "Sign Up";
+"Username" = "Username";
+"Create label" = "Don't have an account yet?";
+"Create button" = "Sign up!";
+"Register title" = "CREATE ACCOUNT";
+"English" = "English";
+"Portuguese" = "Portuguese";
+"Japanese" = "Japanese";
+"Change Language" = "Change Language";
+"Please choose your preferred language" = "Please choose your preferred language";
+"Cancel" = "Cancel";
+"No Data" = "No Data";
