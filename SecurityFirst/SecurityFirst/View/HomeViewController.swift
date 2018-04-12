@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         tableView.delegate = self
         super.viewDidLoad()
     }
-    
+    // Helper
     func handleLoading(_ start: Bool) {
         if start {
             Loading.start()
@@ -64,7 +64,12 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.URLs.count + 1
+    }
+
+    //Actions
     @IBAction func changeLanguage(_ sender: Any) {
         let alert = UIAlertController(title: "Change Language".localized(using: "Localizable"), message: "Please choose your preferred language".localized(using: "Localizable"), preferredStyle: .actionSheet)
         
@@ -85,8 +90,6 @@ class HomeViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.URLs.count + 1
-    }
 
+   
 }

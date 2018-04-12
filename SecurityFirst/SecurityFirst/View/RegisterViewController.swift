@@ -27,7 +27,7 @@ class RegisterViewController: UIViewController {
         setupView()
     }
     
-    
+    // Setup and Bind View
     func setupView(){
 
         self.title = "Register title".localized(using: "Localizable")
@@ -55,7 +55,7 @@ class RegisterViewController: UIViewController {
         _ = registerModel.isValidRegister.map { $0 }
             .bind(to: register.rx.isEnabled)
     }
-    
+    // Helper
     func handleLoading(_ start: Bool) {
         if start {
             Loading.start()
@@ -71,7 +71,7 @@ class RegisterViewController: UIViewController {
         }
         
     }
-   
+   // Actions
     @IBAction func registerRequest(_ sender: Any) {
         handleLoading(true)
 
@@ -85,5 +85,5 @@ class RegisterViewController: UIViewController {
             }
         }
     }
-    
+
 }

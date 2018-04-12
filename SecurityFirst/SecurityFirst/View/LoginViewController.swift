@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     let allLanguage = Language.getAllLanguages()
     var loginModel = LoginViewModel()
     
-    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         Language.delegate = self
@@ -37,20 +37,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func loginRequest(_ sender: Any) {
-        handleLoading(true)
-        loginModel.attemptToLogin { (success, message) in
-            if success {
-                self.performSegue(withIdentifier: "goToHome", sender: self)
-            } else {
-                self.handleLoading(false)
-              self.showAlert(title: "Erro", message: message)
-                
-            }
-        }
-        
-    }
-    
+    // Setup and Bind View
     func setupBind() {
         _ = emailTextField.rx.text
             .orEmpty
@@ -75,6 +62,24 @@ class LoginViewController: UIViewController {
         
     }
     
+    
+    // Actions
+    @IBAction func loginRequest(_ sender: Any) {
+        handleLoading(true)
+        loginModel.attemptToLogin { (success, message) in
+            if success {
+                self.performSegue(withIdentifier: "goToHome", sender: self)
+            } else {
+                self.handleLoading(false)
+              self.showAlert(title: "Erro", message: message)
+                
+            }
+        }
+        
+    }
+    
+    
+    //Helper
     func handleLoading(_ start: Bool) {
         if start {
             Loading.start()
@@ -86,7 +91,7 @@ class LoginViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
             self.view.alpha = 1
             self.navigationController?.navigationBar.alpha = 1
-
+            
         }
         
         
