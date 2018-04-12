@@ -14,5 +14,10 @@
 "Create label" = "あなたはここに新しい？";
 "Create button" = "サインアップ！";
 "Register title" = "登録";
-
-
+"English" = "英語";
+"Portuguese" = "ポルトガル";
+"Japanese" = "日本語";
+"Change Language" = "言語を変えてください";
+"Please choose your preferred language" = "あなたの好みの言語を選んでください";
+"Cancel" = "キャンセル";
+"No Data" = "データなし";

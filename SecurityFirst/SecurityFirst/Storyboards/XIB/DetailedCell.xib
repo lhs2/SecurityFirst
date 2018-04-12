@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="DetailedCell" customModule="SecurityFirst" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2JK-Kg-uOU">
+                        <rect key="frame" x="10" y="10" width="300" height="179.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y2-tt-WVu">
+                                <rect key="frame" x="0.0" y="65" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hax-Po-hkQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="tCz-4s-Gi0"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fb6-w4-kvI">
+                                <rect key="frame" x="90" y="20.5" width="210" height="139"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cw-EN-IUe">
+                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKK-UV-Qcn">
+                                        <rect key="frame" x="0.0" y="31.5" width="32.5" height="27"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4k-lG-y1L">
+                                        <rect key="frame" x="0.0" y="63.5" width="91" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3e-Ce-e4F">
+                                        <rect key="frame" x="0.0" y="95" width="66" height="44"/>
+                                        <state key="normal" title="Password"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Fb6-w4-kvI" firstAttribute="height" secondItem="2JK-Kg-uOU" secondAttribute="height" constant="-40" id="2Mz-W0-aAh"/>
+                            <constraint firstItem="1Y2-tt-WVu" firstAttribute="leading" secondItem="2JK-Kg-uOU" secondAttribute="leading" id="DkM-IA-fwa"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" red="0.19607843137254902" green="0.20392156862745098" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0bd-Re-XmT"/>
+                    <constraint firstAttribute="trailing" secondItem="2JK-Kg-uOU" secondAttribute="trailing" constant="10" id="6ld-9q-sh1"/>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9cr-49-zdb"/>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Jxy-yy-wuv"/>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OmH-uy-D3X"/>
+                    <constraint firstAttribute="bottom" secondItem="2JK-Kg-uOU" secondAttribute="bottom" constant="10" id="QCm-Ew-aQq"/>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="X8G-9n-Bya"/>
+                    <constraint firstItem="2JK-Kg-uOU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" constant="-20" id="fFO-VH-eTR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="logoButton" destination="1Y2-tt-WVu" id="sgz-oD-Lh1"/>
+                <outlet property="passwordButton" destination="N3e-Ce-e4F" id="7ym-Lw-AGC"/>
+                <outlet property="titleLabel" destination="8cw-EN-IUe" id="y4l-bq-m9t"/>
+                <outlet property="urlLabel" destination="vKK-UV-Qcn" id="pra-GL-cgn"/>
+                <outlet property="usernameLabel" destination="f4k-lG-y1L" id="aLW-1N-3Y0"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

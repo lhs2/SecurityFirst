@@ -19,15 +19,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerLabel: UILabel!
     @IBOutlet weak var registerButton: BorderUIButton!
     
-     let allLanguage = Language.getAllLanguages()
-    
+    let allLanguage = Language.getAllLanguages()
     var loginModel = LoginViewModel()
     
-    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
-            Language.setCurrentLanguage("en")
-            Language.delegate = self
+        Language.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -39,17 +37,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func loginRequest(_ sender: Any) {
-        loginModel.attemptToLogin { (success, message) in
-            if success {
-              self.showAlert(title: "Faz segue", message: message)
-            } else {
-              self.showAlert(title: "Erro", message: message)
-            }
-        }
-        
-    }
-    
+    // Setup and Bind View
     func setupBind() {
         _ = emailTextField.rx.text
             .orEmpty
@@ -65,17 +53,52 @@ class LoginViewController: UIViewController {
     }
     
     func setupView(){
-        self.navigationController?.isNavigationBarHidden = true
         
         emailTextField.placeholder = "Email".localized(using: "Localizable")
         passwordTextField.placeholder = "Password".localized(using: "Localizable")
         registerLabel.text = "Create label".localized(using: "Localizable")
         login.setTitle("Login".localized(using: "Localizable"), for: .normal)
         registerButton.setTitle("Create button".localized(using: "Localizable"), for: .normal)
+        
     }
     
     
+    // Actions
+    @IBAction func loginRequest(_ sender: Any) {
+        handleLoading(true)
+        loginModel.attemptToLogin { (success, message) in
+            if success {
+                self.performSegue(withIdentifier: "goToHome", sender: self)
+            } else {
+                self.handleLoading(false)
+              self.showAlert(title: "Erro", message: message)
+                
+            }
+        }
+        
+    }
     
+    
+    //Helper
+    func handleLoading(_ start: Bool) {
+        if start {
+            Loading.start()
+            self.view.isUserInteractionEnabled = false
+            self.view.alpha = 0.6
+            self.navigationController?.navigationBar.alpha = 0.6
+        } else {
+            Loading.stop()
+            self.view.isUserInteractionEnabled = true
+            self.view.alpha = 1
+            self.navigationController?.navigationBar.alpha = 1
+            
+        }
+    }
+
+    // Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 extension UIViewController : LanguageDelegate {

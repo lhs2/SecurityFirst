@@ -27,9 +27,9 @@ class RegisterViewController: UIViewController {
         setupView()
     }
     
-    
+    // Setup and Bind View
     func setupView(){
-        self.navigationController?.isNavigationBarHidden = false
+
         self.title = "Register title".localized(using: "Localizable")
         nameTextField.placeholder = "Username".localized(using: "Localizable")
         passwordTextField.placeholder = "Password".localized(using: "Localizable")
@@ -55,15 +55,40 @@ class RegisterViewController: UIViewController {
         _ = registerModel.isValidRegister.map { $0 }
             .bind(to: register.rx.isEnabled)
     }
-   
+    // Helper
+    func handleLoading(_ start: Bool) {
+        if start {
+            Loading.start()
+            self.view.isUserInteractionEnabled = false
+            self.view.alpha = 0.6
+            self.navigationController?.navigationBar.alpha = 0.6
+        } else {
+            Loading.stop()
+            self.view.isUserInteractionEnabled = true
+            self.view.alpha = 1
+            self.navigationController?.navigationBar.alpha = 1
+            
+        }
+        
+    }
+   // Actions
     @IBAction func registerRequest(_ sender: Any) {
+        handleLoading(true)
+
         registerModel.attemptToRegister() { (success, message) in
             if success {
-                self.showAlert(title: "Faz segue", message: message)
+                self.performSegue(withIdentifier: "goToHome", sender: self)
             } else {
                 self.showAlert(title: "Erro", message: message)
+                self.handleLoading(false)
+
             }
         }
     }
     
+    // Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
 }

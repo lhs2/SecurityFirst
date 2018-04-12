@@ -12,10 +12,11 @@ import RxSwift
 struct UserModel {
     var email: String = ""
     var password: String = ""
-    
-    init(_ email: String, _ password: String) {
+    var url: String = ""
+    init(_ email: String, _ password: String, _ url: String) {
         self.email = email
         self.password = password
+        self.url = url
     }
     
 }

@@ -14,5 +14,10 @@
 "Create label" = "Don't have an account yet?";
 "Create button" = "Sign up!";
 "Register title" = "CREATE ACCOUNT";
-
-
+"English" = "English";
+"Portuguese" = "Portuguese";
+"Japanese" = "Japanese";
+"Change Language" = "Change Language";
+"Please choose your preferred language" = "Please choose your preferred language";
+"Cancel" = "Cancel";
+"No Data" = "No Data";
