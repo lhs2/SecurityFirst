@@ -93,10 +93,12 @@ class LoginViewController: UIViewController {
             self.navigationController?.navigationBar.alpha = 1
             
         }
-        
-        
     }
 
+    // Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 extension UIViewController : LanguageDelegate {
