@@ -55,13 +55,33 @@ class RegisterViewController: UIViewController {
         _ = registerModel.isValidRegister.map { $0 }
             .bind(to: register.rx.isEnabled)
     }
+    
+    func handleLoading(_ start: Bool) {
+        if start {
+            Loading.start()
+            self.view.isUserInteractionEnabled = false
+            self.view.alpha = 0.6
+            self.navigationController?.navigationBar.alpha = 0.6
+        } else {
+            Loading.stop()
+            self.view.isUserInteractionEnabled = true
+            self.view.alpha = 1
+            self.navigationController?.navigationBar.alpha = 1
+            
+        }
+        
+    }
    
     @IBAction func registerRequest(_ sender: Any) {
+        handleLoading(true)
+
         registerModel.attemptToRegister() { (success, message) in
             if success {
                 self.performSegue(withIdentifier: "goToHome", sender: self)
             } else {
                 self.showAlert(title: "Erro", message: message)
+                self.handleLoading(false)
+
             }
         }
     }
