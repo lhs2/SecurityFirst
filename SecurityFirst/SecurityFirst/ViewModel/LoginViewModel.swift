@@ -11,15 +11,17 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Alamofire
+import KeychainSwift
 
 class LoginViewModel: ReactiveCompatible {
     
     
     let email = Variable<String>("")
     let password = Variable<String>("")
-    
     let isValidLogin: Observable<Bool>
-
+    
+    let keychain = KeychainSwift()
+    
     init() {
         isValidLogin = Observable.combineLatest(self.email.asObservable(), self.password.asObservable())
         { (email, password) in
@@ -44,6 +46,10 @@ class LoginViewModel: ReactiveCompatible {
         
         APIManager.sharedInstance.request( .post, .SignIn, nil, params) { (status, message) in
             if(status){
+                let lastLogin = self.keychain.get("lastLogin")
+                if(lastLogin != nil && lastLogin != self.email.value) {
+                    handler(true,"not equal email")
+                }
                 handler(true, message)
             } else {
                 handler(false, message)
@@ -51,8 +57,13 @@ class LoginViewModel: ReactiveCompatible {
         }
         
     }
-        
-   
     
+    func clearData() {
+        let token = keychain.get("token")
+        keychain.clear()
+        keychain.set(token!, forKey: "token")
+        keychain.set(email.value,forKey: "lastLogin")
+    }
+
 }
 

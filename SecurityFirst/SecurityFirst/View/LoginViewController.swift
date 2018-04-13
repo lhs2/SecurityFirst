@@ -11,6 +11,7 @@ import TextFieldEffects
 import Bond
 import ReactiveKit
 import SwitchLanguage
+import KeychainSwift
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: HoshiTextField!
@@ -21,7 +22,7 @@ class LoginViewController: UIViewController {
     
     let allLanguage = Language.getAllLanguages()
     var loginModel = LoginViewModel()
-    
+    let keychain = KeychainSwift()
     //
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +68,16 @@ class LoginViewController: UIViewController {
     @IBAction func loginRequest(_ sender: Any) {
         handleLoading(true)
         loginModel.attemptToLogin { (success, message) in
-            if success {
+            if success && message == "not equal email"{
+                let title = "Warning".localized(using: "Localizable")
+                let message = "Not Equal Email".localized(using: "Localizable")
+                self.handleLoading(false)
+               self.notEqualEmail(title, message)
+            } else if success {
                 self.performSegue(withIdentifier: "goToHome", sender: self)
             } else {
                 self.handleLoading(false)
-              self.showAlert(title: "Erro", message: message)
+              self.showAlert(title: "Error", message: message)
                 
             }
         }
@@ -94,6 +100,17 @@ class LoginViewController: UIViewController {
             
         }
     }
+    func notEqualEmail(_ title: String,_ message: String ) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+         self.handleLoading(true)
+         self.loginModel.clearData()
+         self.performSegue(withIdentifier: "goToHome", sender: self)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
 
     // Keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -112,5 +129,7 @@ extension UIViewController : LanguageDelegate {
         }))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+   
     
 }

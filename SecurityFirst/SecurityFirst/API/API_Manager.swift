@@ -16,7 +16,13 @@ class APIManager {
     
     
     static let sharedInstance: APIManager = APIManager()
-    
+    let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent("logo.png")
+        
+        return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+    }
+
     private init() {
         self.manager = Alamofire.SessionManager()
     }
@@ -70,8 +76,29 @@ class APIManager {
             })
        
     }
+    func download(_ pathParamenters : [CVarArg]?,
+                  handler: @escaping ((_ status: Bool, _ URL: Data, _ message: String)->Void)) {
+        var requestURL = APIManager.BASE_URL + Endpoint.Logo.rawValue
+        if pathParamenters != nil && (pathParamenters?.count)! > 0 {
+            requestURL = String.init(format: requestURL, arguments: pathParamenters!)
+        }
+        
+        let encoding: ParameterEncoding = JSONEncoding.default
+        
+        headers["Authorization"] = keychain.get("token")
+        self.manager.download(requestURL, method: .get, parameters: nil, encoding: encoding, headers: headers, to: destination)
+            .downloadProgress { progress in
+                print("Download Progress: \(progress.fractionCompleted)")
+            }
+            .responseData { response in
+                if let data = response.result.value {
+                    handler(true, data, "OK")
+                }
+                handler(false, Data(), "error")
+            }
+        }
     
-    
+  
     func handleResponse( _ endpoint : Endpoint,
                          _ json     : JSON) {
         if let token = json["token"].string {
@@ -97,6 +124,8 @@ class APIManager {
         }
         
     }
+    
+    
     
 }
 

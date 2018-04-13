@@ -21,3 +21,11 @@
 "Please choose your preferred language" = "Please choose your preferred language";
 "Cancel" = "Cancel";
 "No Data" = "No Data";
+"Warning" = "Warning";
+"Not Equal Email" = "Using a different account will erase the data. Do you wish to continue?";
+"Information" = "Information";
+"Password copied!" = "Password copied!";
+"Can't open the url" = "Can't open the url";
+"Missing Fields" = "Missing Fields";
+"New Account" = "New Account";
+"Enter your account details" = "Enter your account details";

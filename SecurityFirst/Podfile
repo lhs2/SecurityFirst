@@ -17,8 +17,10 @@ target 'SecurityFirst' do
   pod 'Bond'
   pod 'SwitchLanguage', '~> 1.0'
   pod 'IQKeyboardManager'
-
-  target 'SecurityFirstTests' do
+  pod 'Kingfisher'
+  pod 'Toast-Swift', '~> 3.0.1'
+  
+target 'SecurityFirstTests' do
     inherit! :search_paths
 
     # Pods for testing

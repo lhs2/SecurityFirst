@@ -11,6 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Alamofire
+import KeychainSwift
 
 class RegisterViewModel: ReactiveCompatible {
     
@@ -18,8 +19,9 @@ class RegisterViewModel: ReactiveCompatible {
     let email = Variable<String>("")
     let password = Variable<String>("")
     let username = Variable<String>("")
-    
     let isValidRegister: Observable<Bool>
+    
+    let keychain = KeychainSwift()
     
     init() {
         isValidRegister = Observable.combineLatest( self.email.asObservable(),
@@ -36,7 +38,6 @@ class RegisterViewModel: ReactiveCompatible {
     let basePasswordPattern = "(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{"
     
     func isValidRegex(_ testStr:String, _ pattern: String                ) -> Bool {
-        print(testStr)
         let Test = NSPredicate(format:"SELF MATCHES %@", pattern)
         return Test.evaluate(with: testStr)
     }
@@ -55,14 +56,21 @@ class RegisterViewModel: ReactiveCompatible {
             ]
             APIManager.sharedInstance.request( .post, .SignUp, nil, params) { (status, message) in
                 if(status){
+                    self.clearData()
                     handler(true, message)
                 } else {
                     handler(false, message)
                 }
             }
         }
-       
-        
+
+    }
+    
+    func clearData() {
+        let token = keychain.get("token")
+        keychain.clear()
+        keychain.set(token!, forKey: "token")
+        keychain.set(email.value,forKey: "lastLogin")
     }
     
 }

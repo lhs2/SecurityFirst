@@ -21,3 +21,11 @@
 "Please choose your preferred language" = "Por favor escolha o idioma de sua preferencia";
 "Cancel" = "Cancelar";
 "No Data" = "Sem dados";
+"Warning" = "Aviso";
+"Not Equal Email" = "Ao usar uma conta diferente os dados serão apagados. Deseja continuar?";
+"Information" = "Informações";
+"Password copied!" = "Senha copiada!";
+"Can't open the url" = "Não foi possivel abrir a URL";
+"Missing Fields" = "Campos pendentes";
+"New Account" = "Nova Conta";
+"Enter your account details" = "Digite os dados da sua conta";

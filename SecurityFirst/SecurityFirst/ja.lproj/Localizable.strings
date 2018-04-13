@@ -21,3 +21,11 @@
 "Please choose your preferred language" = "あなたの好みの言語を選んでください";
 "Cancel" = "キャンセル";
 "No Data" = "データなし";
+"Warning" = "Warning";
+"Not Equal Email" = "別のアカウントを使用するとデータが消去されます。 続行しますか？";
+"Information" = "情報";
+"Password copied!" = "パスワードをコピーしました！";
+"Can't open the url" = "URLを開くことができません";
+"Missing Fields" = "不足しているフィールド";
+"New Account" = "新しいアカウント";
+"Enter your account details" = "アカウントの詳細を入力してください";
