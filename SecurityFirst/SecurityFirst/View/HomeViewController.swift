@@ -111,6 +111,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.row != 0) {
+            return 60
+        }
+        return 160
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fatalError("This will never be called.")
