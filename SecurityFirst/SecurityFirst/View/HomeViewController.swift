@@ -107,7 +107,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row != 0) {
-            self.homeModel.selectedRow(indexPath.row)
+            self.alertSelectRow(indexPath.row)
         }
         
     }
@@ -118,91 +118,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return 160
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         fatalError("This will never be called.")
     }
-
+    
     //Actions
-    @IBAction func changeLanguage(_ sender: Any) {
-        let alert = UIAlertController(title: "Change Language".localized(using: "Localizable"), message: "Please choose your preferred language".localized(using: "Localizable"), preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "English".localized(using: "Localizable"), style: .default, handler: { (action) in
-          Language.setCurrentLanguage("en")
-            self.tableView.reloadData()
+    
+    
+    @IBAction func addAccount(_ sender: Any) {
+        let alert = UIAlertController(title: "Options".localized(using: "Localizable"), message: "Please choose an option".localized(using: "Localizable"), preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Change Language".localized(using: "Localizable"), style: .default, handler: { (action) in
+            self.alertChangeLanguage()
         }))
-        alert.addAction(UIAlertAction(title: "Portuguese".localized(using: "Localizable"), style: .default, handler: { (action) in
-            Language.setCurrentLanguage("pt-BR")
-            self.tableView.reloadData()
-        }))
-        alert.addAction(UIAlertAction(title: "Japanese".localized(using: "Localizable"), style: .default, handler: { (action) in
-            Language.setCurrentLanguage("ja")
-            self.tableView.reloadData()
+        alert.addAction(UIAlertAction(title: "New Account".localized(using: "Localizable"), style: .default, handler: { (action) in
+            self.alertAddAccount(false)
         }))
         alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel , handler: nil))
         self.present(alert, animated: true, completion: nil)
-
-    }
-    @IBAction func addAccount(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "New Account".localized(using: "Localizable"),
-                                      message: "Enter your account details".localized(using: "Localizable"),
-                                      preferredStyle: .alert)
-        
-        // Login button
-        let loginAction = UIAlertAction(title: "Add", style: .default, handler: { (action) -> Void in
-            // Get TextFields text
-            let username = alert.textFields![0].text
-            let password = alert.textFields![1].text
-            let url = alert.textFields![2].text
-            if username != "" && password != "" && url != "" {
-                self.homeModel.addNewAccount(url!, username!, password!)
-                print(self.homeModel.accountList, self.homeModel.accountList.count)
-            } else {
-                self.view.makeToast("Missing Fields".localized(using: "Localizable"))
-            }
-            
-            
-        })
-        
-        
-        // Cancel button
-        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
-        
-        
-        // Add 1 textField (for username)
-        alert.addTextField { (textField: UITextField) in
-            textField.keyboardAppearance = .dark
-            textField.keyboardType = .default
-            textField.autocorrectionType = .no
-            textField.placeholder = "Username".localized(using: "Localizable")
-        }
-        
-        
-        // Add 2nd textField (for password)
-        alert.addTextField { (textField: UITextField) in
-            textField.keyboardAppearance = .dark
-            textField.keyboardType = .default
-            textField.autocorrectionType = .no
-            textField.placeholder = "Password".localized(using: "Localizable")
-            textField.isSecureTextEntry = true
-        }
-        
-        
-        // Add 3rd textField (for phone no.)
-        alert.addTextField { (textField: UITextField) in
-            textField.keyboardAppearance = .dark
-            textField.keyboardType = .default
-            textField.autocorrectionType = .no
-            textField.placeholder = "URL"
-        }
-        
-        
-        // Add action buttons and present the Alert
-        alert.addAction(loginAction)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-        
         
     }
     
@@ -228,7 +161,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.view.makeToast(error)
                 }
             }
-        self.view.makeToast(error)
+            self.view.makeToast(error)
         }
     }
     
@@ -236,6 +169,108 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-   
+    
+    // Alerts
+    func alertChangeLanguage() {
+        let alert = UIAlertController(title: "Change Language".localized(using: "Localizable"), message: "Please choose your preferred language".localized(using: "Localizable"), preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "English".localized(using: "Localizable"), style: .default, handler: { (action) in
+            Language.setCurrentLanguage("en")
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Portuguese".localized(using: "Localizable"), style: .default, handler: { (action) in
+            Language.setCurrentLanguage("pt-BR")
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Japanese".localized(using: "Localizable"), style: .default, handler: { (action) in
+            Language.setCurrentLanguage("ja")
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel , handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func alertAddAccount(_ editable: Bool) {
+        
+        let alert = UIAlertController(title: "New Account".localized(using: "Localizable"),
+                                      message: "Enter your account details".localized(using: "Localizable"),
+                                      preferredStyle: .alert)
+        
+        let loginAction = UIAlertAction(title: "Add", style: .default, handler: { (action) -> Void in
+            let username = alert.textFields![0].text
+            let password = alert.textFields![1].text
+            let url = alert.textFields![2].text
+            if username != "" && password != "" && url != "" {
+                self.homeModel.addNewAccount(url!, username!, password!)
+                print(self.homeModel.accountList, self.homeModel.accountList.count)
+            } else {
+                self.view.makeToast("Missing Fields".localized(using: "Localizable"))
+            }
+            
+            
+        })
+        
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) -> Void in })
+        
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.keyboardAppearance = .dark
+            textField.keyboardType = .default
+            textField.autocorrectionType = .no
+            textField.placeholder = "Username".localized(using: "Localizable")
+            if editable {
+                textField.text = self.homeModel.login.value
+            }
+        }
+        
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.keyboardAppearance = .dark
+            textField.keyboardType = .default
+            textField.autocorrectionType = .no
+            textField.placeholder = "Password".localized(using: "Localizable")
+            textField.isSecureTextEntry = true
+            
+        }
+        
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.keyboardAppearance = .dark
+            textField.keyboardType = .default
+            textField.autocorrectionType = .no
+            textField.placeholder = "URL"
+            if editable {
+                textField.text = self.homeModel.url.value
+                textField.isEnabled = false
+            }
+        }
+        
+        
+        alert.addAction(loginAction)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func alertSelectRow(_ row: Int) {
+        let alert = UIAlertController(title: "Options".localized(using: "Localizable"), message: "Please choose an option".localized(using: "Localizable"), preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Show Info".localized(using: "Localizable"), style: .default, handler: { (action) in
+            self.homeModel.selectedRow(row)
+        }))
+        alert.addAction(UIAlertAction(title: "Edit Info".localized(using: "Localizable"), style: .default, handler: { (action) in
+            self.alertAddAccount(true)
+        }))
+        alert.addAction(UIAlertAction(title: "Remove Info".localized(using: "Localizable"), style: .default, handler: { (action) in
+            self.homeModel.deleteRow(row)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel , handler: nil))
+        
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    
 }

@@ -29,3 +29,8 @@
 "Missing Fields" = "不足しているフィールド";
 "New Account" = "新しいアカウント";
 "Enter your account details" = "アカウントの詳細を入力してください";
+"Options" = "オプション";
+"Please choose an option" = "オプションを選択してください";
+"Show Info" = "ショー情報";
+"Edit Info" = "情報を編集する";
+"Remove Info" = "情報を削除する";

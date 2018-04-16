@@ -68,6 +68,15 @@ class HomeViewModel: ReactiveCompatible {
         requestImage()
     }
     
+    func deleteRow(_ row: Int) {
+        let url = self.accountList[row] as? String
+        var accountString = keychain.get("AccountList")
+        let urls = separeAndRemove(accountString!, url!)
+        accountString = urls.joined(separator: "^")
+        keychain.set(accountString!, forKey: "AccountList")
+        updateAccountList()
+    }
+        
     @objc func handlePasswordButton()->String {
         if(self.password.value == "******") {
             self.password.value = keychain.get(self.url.value+"/senha")!
@@ -80,7 +89,7 @@ class HomeViewModel: ReactiveCompatible {
         }
         return ""
     }
-    
+    // Alamofire async download
     func requestImage() {
         var pathP: [CVarArg] = []
         pathP.append(self.url.value as CVarArg)
@@ -95,9 +104,18 @@ class HomeViewModel: ReactiveCompatible {
         }
     }
     
+    //String handling
     func separe(_ item:String)->[String] {
         let components = item.components(separatedBy: "^")
         return components
+    }
+        
+    func separeAndRemove(_ item:String,_ url: String)->[String] {
+        let components = item.components(separatedBy: "^")
+        keychain.delete(url)
+        keychain.delete(url+"/login")
+        keychain.delete(url+"/senha")
+        return components.filter { $0 != url }
     }
 }
 

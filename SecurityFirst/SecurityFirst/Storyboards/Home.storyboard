@@ -72,12 +72,6 @@
                         <viewLayoutGuide key="safeArea" id="eh1-ae-mAv"/>
                     </view>
                     <navigationItem key="navigationItem" id="VWw-OF-fzZ">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-language_filled" id="Hik-ce-wew">
-                            <color key="tintColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="changeLanguage:" destination="jb6-Kj-GKg" id="RTs-9S-fOQ"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-add" id="Zql-Qw-RA3">
                             <color key="tintColor" red="0.58039215690000001" green="0.58431372550000005" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -115,6 +109,5 @@
     </scenes>
     <resources>
         <image name="icons8-add" width="25" height="25"/>
-        <image name="icons8-language_filled" width="25" height="25"/>
     </resources>
 </document>
