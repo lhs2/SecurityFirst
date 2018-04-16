@@ -27,7 +27,7 @@ class APIManager {
         self.manager = Alamofire.SessionManager()
     }
     
-    static let BASE_URL = "https://dev.people.com.ai/mobile/api/v2/"
+    static let baseURL = "https://dev.people.com.ai/mobile/api/v2/"
     
     private let manager: Alamofire.SessionManager!
     
@@ -39,9 +39,9 @@ class APIManager {
     ]
     
     enum Endpoint: String {
-        case SignIn = "login"
-        case SignUp = "register"
-        case Logo = "logo/%@"
+        case signIn = "login"
+        case signUp = "register"
+        case logo = "logo/%@"
     }
     
         func request(_ method          : Alamofire.HTTPMethod,
@@ -51,7 +51,7 @@ class APIManager {
                      handler: @escaping ((_ status: Bool, _ message: String)->Void)) {
         
         
-        var requestURL = APIManager.BASE_URL + endpoint.rawValue
+        var requestURL = APIManager.baseURL + endpoint.rawValue
         
         if pathParamenters != nil && (pathParamenters?.count)! > 0 {
             requestURL = String.init(format: requestURL, arguments: pathParamenters!)
@@ -59,7 +59,7 @@ class APIManager {
         
         let encoding: ParameterEncoding = JSONEncoding.default
         
-        if endpoint.rawValue == Endpoint.Logo.rawValue {
+        if endpoint.rawValue == Endpoint.logo.rawValue {
             headers["Authorization"] = keychain.get("token")
         }
          self.manager.request(requestURL, method: method, parameters: parameters, encoding: encoding, headers: headers).rx.responseJSON()
@@ -67,7 +67,7 @@ class APIManager {
                 onNext: {
                     self.handleResponse(endpoint, JSON($0))
                     let message = self.keychain.get("message") ?? ""
-                    if(message == "OK") {
+                    if message == "OK" {
                         handler(true, message)
                     } else {
                         handler(false, message)
@@ -78,7 +78,7 @@ class APIManager {
     }
     func download(_ pathParamenters : [CVarArg]?,
                   handler: @escaping ((_ status: Bool, _ URL: Data, _ message: String)->Void)) {
-        var requestURL = APIManager.BASE_URL + Endpoint.Logo.rawValue
+        var requestURL = APIManager.baseURL + Endpoint.logo.rawValue
         if pathParamenters != nil && (pathParamenters?.count)! > 0 {
             requestURL = String.init(format: requestURL, arguments: pathParamenters!)
         }
@@ -103,9 +103,9 @@ class APIManager {
                          _ json     : JSON) {
         if let token = json["token"].string {
             switch endpoint {
-            case .SignIn:
+            case .signIn:
                 keychain.set(token, forKey: "token")
-            case .SignUp:
+            case .signUp:
                 keychain.set(token, forKey: "token")
             default:
                 print("Endpoint do not support handleResponse")
@@ -113,9 +113,9 @@ class APIManager {
             keychain.set("OK", forKey: "message")
         } else if var message = json["message"].string {
             switch endpoint {
-            case .SignIn:
+            case .signIn:
                 message = "Login: \(message)"
-            case .SignUp:
+            case .signUp:
                 message = "Registro: \(message)"
             default:
                 print("Endpoint do not support handleResponse")

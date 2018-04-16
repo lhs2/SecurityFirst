@@ -128,10 +128,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addAccount(_ sender: Any) {
         let alert = UIAlertController(title: "Options".localized(using: "Localizable"), message: "Please choose an option".localized(using: "Localizable"), preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Change Language".localized(using: "Localizable"), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Change Language".localized(using: "Localizable"), style: .default, handler: { _ in
             self.alertChangeLanguage()
         }))
-        alert.addAction(UIAlertAction(title: "New Account".localized(using: "Localizable"), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "New Account".localized(using: "Localizable"), style: .default, handler: { _ in
             self.alertAddAccount(false)
         }))
         alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel , handler: nil))
@@ -153,11 +153,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             do {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url, options: [:])
-                }
-                else if UIApplication.shared.canOpenURL(httpURL) {
+                } else if UIApplication.shared.canOpenURL(httpURL) {
                     UIApplication.shared.open(url, options: [:])
-                }
-                else {
+                } else {
                     self.view.makeToast(error)
                 }
             }
@@ -172,21 +170,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Alerts
     func alertChangeLanguage() {
-        let alert = UIAlertController(title: "Change Language".localized(using: "Localizable"), message: "Please choose your preferred language".localized(using: "Localizable"), preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Change Language".localized(using: "Localizable"),
+                                      message: "Please choose your preferred language".localized(using: "Localizable"),
+                                      preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "English".localized(using: "Localizable"), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "English".localized(using: "Localizable"), style: .default, handler: { _ in
             Language.setCurrentLanguage("en")
             self.tableView.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "Portuguese".localized(using: "Localizable"), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Portuguese".localized(using: "Localizable"), style: .default, handler: { _ in
             Language.setCurrentLanguage("pt-BR")
             self.tableView.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "Japanese".localized(using: "Localizable"), style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Japanese".localized(using: "Localizable"), style: .default, handler: { _ in
             Language.setCurrentLanguage("ja")
             self.tableView.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel , handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(using: "Localizable"), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }
@@ -197,7 +197,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                                       message: "Enter your account details".localized(using: "Localizable"),
                                       preferredStyle: .alert)
         
-        let loginAction = UIAlertAction(title: "Add", style: .default, handler: { (action) -> Void in
+        let loginAction = UIAlertAction(title: "Add", style: .default, handler: { _ -> Void in
             let username = alert.textFields![0].text
             let password = alert.textFields![1].text
             let url = alert.textFields![2].text

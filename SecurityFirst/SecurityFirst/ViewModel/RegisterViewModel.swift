@@ -38,8 +38,8 @@ class RegisterViewModel: ReactiveCompatible {
     let basePasswordPattern = "(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{"
     
     func isValidRegex(_ testStr:String, _ pattern: String                ) -> Bool {
-        let Test = NSPredicate(format:"SELF MATCHES %@", pattern)
-        return Test.evaluate(with: testStr)
+        let test = NSPredicate(format:"SELF MATCHES %@", pattern)
+        return test.evaluate(with: testStr)
     }
     
     func attemptToRegister( handler: @escaping ((_ success: Bool, _ message: String)->Void)) {
@@ -54,7 +54,7 @@ class RegisterViewModel: ReactiveCompatible {
                 "password": password.value,
                 "username": username.value
             ]
-            APIManager.sharedInstance.request( .post, .SignUp, nil, params) { (status, message) in
+            APIManager.sharedInstance.request( .post, .signUp, nil, params) { (status, message) in
                 if(status){
                     self.clearData()
                     handler(true, message)

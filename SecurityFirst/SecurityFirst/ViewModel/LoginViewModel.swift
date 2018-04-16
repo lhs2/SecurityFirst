@@ -33,9 +33,9 @@ class LoginViewModel: ReactiveCompatible {
     let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     //let passwordPattern = "^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
 
-    func isValidRegex(_ testStr:String, _ pattern: String                ) -> Bool {
-        let Test = NSPredicate(format:"SELF MATCHES %@", pattern)
-        return Test.evaluate(with: testStr)
+    func isValidRegex(_ testStr:String, _ pattern:String) -> Bool {
+        let test = NSPredicate(format:"SELF MATCHES %@", pattern)
+        return test.evaluate(with: testStr)
     }
     
     func attemptToLogin( handler: @escaping ((_ success: Bool, _ message: String)->Void)) {
@@ -44,7 +44,7 @@ class LoginViewModel: ReactiveCompatible {
             "password": password.value,
         ]
         
-        APIManager.sharedInstance.request( .post, .SignIn, nil, params) { (status, message) in
+        APIManager.sharedInstance.request( .post, .signIn, nil, params) { (status, message) in
             if(status){
                 let lastLogin = self.keychain.get("lastLogin")
                 if(lastLogin != nil && lastLogin != self.email.value) {

@@ -29,13 +29,10 @@ class LoginViewController: UIViewController {
         Language.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
         self.setupBind()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         self.setupView()
-        
     }
     
     // Setup and Bind View
@@ -43,27 +40,20 @@ class LoginViewController: UIViewController {
         _ = emailTextField.rx.text
             .orEmpty
             .bind(to: loginModel.email)
-        
-        
         _ = passwordTextField.rx.text
             .orEmpty
             .bind(to: loginModel.password)
-        
         _ = loginModel.isValidLogin.map { $0 }
             .bind(to: login.rx.isEnabled)
     }
     
-    func setupView(){
-        
+    func setupView() {
         emailTextField.placeholder = "Email".localized(using: "Localizable")
         passwordTextField.placeholder = "Password".localized(using: "Localizable")
         registerLabel.text = "Create label".localized(using: "Localizable")
         login.setTitle("Login".localized(using: "Localizable"), for: .normal)
         registerButton.setTitle("Create button".localized(using: "Localizable"), for: .normal)
-        
     }
-    
-    
     // Actions
     @IBAction func loginRequest(_ sender: Any) {
         handleLoading(true)
@@ -81,10 +71,7 @@ class LoginViewController: UIViewController {
                 
             }
         }
-        
     }
-    
-    
     //Helper
     func handleLoading(_ start: Bool) {
         if start {
@@ -97,13 +84,12 @@ class LoginViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
             self.view.alpha = 1
             self.navigationController?.navigationBar.alpha = 1
-            
         }
     }
-    func notEqualEmail(_ title: String,_ message: String ) {
+    func notEqualEmail(_ title: String, _ message: String ) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
          self.handleLoading(true)
          self.loginModel.clearData()
          self.performSegue(withIdentifier: "goToHome", sender: self)
@@ -118,18 +104,13 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension UIViewController : LanguageDelegate {
+extension UIViewController: LanguageDelegate {
     public func language(_ language: Language.Type, getLanguageFlag flag: UIImage) {
     }
-    
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
-        }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
-    
-   
-    
 }

@@ -16,9 +16,9 @@ class Loading {
         var view = UIView()
         let screen: CGRect = UIScreen.main.bounds
         var side = screen.width / 4
-        var x = (screen.width / 2) - (side / 2)
-        var y = (screen.height / 2) - (side / 2)
-        view.frame = CGRect(x: x, y: y, width: side, height: side)
+        var xSize = (screen.width / 2) - (side / 2)
+        var ySize = (screen.height / 2) - (side / 2)
+        view.frame = CGRect(x: xSize, y: ySize, width: side, height: side)
         view.backgroundColor = backgroundColor
         view.layer.cornerRadius = 10
         view.alpha = 0.0
